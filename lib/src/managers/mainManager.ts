@@ -20,6 +20,9 @@ export class MainManager {
 
   destroy() {
     this.getSettingsManager().getPlaceholder().remove();
+    this.getSettingsManager()
+      .getElement()
+      .classList.remove(styles.smart_sticky);
 
     if (this._initialized) {
       removeEventListener('scroll', this._windowOnScroll);
@@ -31,6 +34,7 @@ export class MainManager {
 
   init() {
     const self = this;
+
     this._windowOnScroll = () => {
       self.adjustToCurrentScrollTop();
     };
@@ -57,26 +61,20 @@ export class MainManager {
   }
 
   private adjustToCurrentScrollTop() {
-    if (
-      this.getPositionManager().outOfOrigPosition() &&
-      this.getSettingsManager().getOptions().enabled
-    ) {
+    if (this.getPositionManager().outOfOrigPosition()) {
       if (!this.activated()) {
         this.activate();
       }
 
-      if (
-        !this.hide()
-          .getPositionManager()
-          .prepareFixedPosition()
-          .outOfContainer()
-      ) {
-        if (this.getPositionManager().canBeShownDueToScrolling()) {
-          this.getSettingsManager()
-            .getElement()
-            .classList.remove(styles.smart_sticky_invisible);
-          this.getPositionManager().recalculateFixedPosition();
-        }
+      if (this.getPositionManager().prepareFixedPosition().outOfContainer()) {
+        this.hide();
+      } else if (this.getPositionManager().canBeShownDueToScrolling()) {
+        this.getSettingsManager()
+          .getElement()
+          .classList.remove(styles.smart_sticky_invisible);
+        this.getPositionManager().recalculateFixedPosition();
+      } else {
+        this.hide();
       }
     } else if (this.activated()) {
       this.deactivate();

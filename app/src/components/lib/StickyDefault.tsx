@@ -1,7 +1,7 @@
 import SmartSticky from "../../../../lib/src"
 import { SmartStickyPosition } from "../../../../lib/src/SmartSticky.types"
 
-export const StickyDefault = () => {
+export const StickyDefault = ({enabled}: { enabled: boolean }) => {
     return <SmartSticky 
         show={{
           delay: 50,
@@ -21,7 +21,7 @@ export const StickyDefault = () => {
           width: null,
           left: null,
         }}
-        enabled={true}
+        enabled={enabled}
         onActivate={() => null}
         onDeactivate={() => null}
         onActivated={() => null}

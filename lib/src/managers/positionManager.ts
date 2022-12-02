@@ -27,34 +27,38 @@ export class PositionManager {
     const elem = this.getSettingsManager().getElement();
     elem.classList.remove(styles.smart_sticky_active);
 
-    elem.style.left = `${this.getSettingsManager()
-      .getPlaceholder()
-      .offsetLeft.toString()}px`;
-    elem.style.width = `${this.getSettingsManager()
-      .getPlaceholder()
-      .offsetWidth.toString()}px`;
+    elem.style.left = `${
+      this.getSettingsManager().getPlaceholder().offsetLeft
+    }px`;
+    elem.style.width = `${
+      this.getSettingsManager().getPlaceholder().offsetWidth
+    }px`;
     elem.style.bottom = 'auto';
-    elem.style.top = this.getSettingsManager()
-      .getPlaceholder()
-      .offsetTop.toString();
+    elem.style.top = `${
+      this.getSettingsManager().getPlaceholder().offsetTop
+    }px`;
 
     return this;
   }
 
   recalculateFixedPosition() {
     const elem = this.getSettingsManager().getElement();
-    elem.style.top = this.getVerticalOffsetManager().getFromTop().toString();
-    elem.style.bottom = this.getVerticalOffsetManager()
-      .getFromBottom()
-      .toString();
+
+    if (this.getVerticalOffsetManager().isCalculatedFromTop()) {
+      elem.style.top = `${this.getVerticalOffsetManager().getFromTop()}px`;
+      elem.style.bottom = 'auto';
+    } else {
+      elem.style.top = 'auto';
+      elem.style.bottom = `${this.getVerticalOffsetManager().getFromBottom()}px`;
+    }
     return this;
   }
 
   getOrigOffsetTop() {
-    return this.getSettingsManager().getPlaceholder().offsetTop;
+    return computeOffsetTop(this.getSettingsManager().getPlaceholder());
   }
 
-  outOfOrigPositionAbove() {
+  private outOfOrigPositionAbove() {
     if (!this.getSettingsManager().getOptions().show.original.above) {
       return false;
     }
@@ -69,7 +73,7 @@ export class PositionManager {
     );
   }
 
-  outOfOrigPositionUnder() {
+  private outOfOrigPositionUnder() {
     if (!this.getSettingsManager().getOptions().show.original.under) {
       return false;
     }
@@ -88,26 +92,26 @@ export class PositionManager {
     return this.outOfOrigPositionAbove() || this.outOfOrigPositionUnder();
   }
 
-  outOfContainerAbove() {
+  private outOfContainerAbove() {
     return (
       windowScrollingManager.getCurrentScrollTop() +
         (this.getVerticalOffsetManager().isCalculatedFromTop()
-          ? (this.getVerticalOffsetManager().getFromTop() as number)
+          ? this.getVerticalOffsetManager().getFromTop()
           : window.innerHeight -
             this.getSettingsManager().getElement().offsetHeight -
             (this.getVerticalOffsetManager().getFromBottom() as number)) <
-      this.getSettingsManager().getContainer().offsetTop
+      computeOffsetTop(this.getSettingsManager().getContainer())
     );
   }
 
-  outOfContainerUnder() {
+  private outOfContainerUnder() {
     return (
       windowScrollingManager.getCurrentScrollTop() +
         (this.getVerticalOffsetManager().isCalculatedFromTop()
           ? this.getSettingsManager().getElement().offsetHeight +
-            (this.getVerticalOffsetManager().getFromTop() as number)
+            this.getVerticalOffsetManager().getFromTop()
           : window.innerHeight -
-            (this.getVerticalOffsetManager().getFromBottom() as number)) >
+            this.getVerticalOffsetManager().getFromBottom()) >
       computeOffsetTop(this.getSettingsManager().getContainer()) +
         this.getSettingsManager().getContainer().offsetHeight
     );

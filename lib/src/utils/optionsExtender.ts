@@ -1,10 +1,10 @@
 import { SmartStickyOptions } from '../SmartSticky.types';
 import { defaults } from '../immutable';
-import { SmartStickyProps } from '../index';
+import { SmartStickyPartialOptions } from '../index';
 
 const extendAtomicProps = (
   res: SmartStickyOptions,
-  props: SmartStickyProps
+  props: SmartStickyPartialOptions
 ) => {
   if (typeof props.container !== 'undefined') {
     res.container = props.container;
@@ -31,7 +31,7 @@ const extendAtomicProps = (
   }
 };
 
-const extendFixedProps = (res: SmartStickyOptions, props: SmartStickyProps) => {
+const extendFixedProps = (res: SmartStickyOptions, props: SmartStickyPartialOptions) => {
   if (typeof props.fixed === 'undefined') {
     return;
   }
@@ -47,7 +47,7 @@ const extendFixedProps = (res: SmartStickyOptions, props: SmartStickyProps) => {
 
 const extendShowOriginalProps = (
   res: SmartStickyOptions,
-  props: SmartStickyProps
+  props: SmartStickyPartialOptions
 ) => {
   if (
     typeof props.show === 'undefined' ||
@@ -67,7 +67,7 @@ const extendShowOriginalProps = (
 
 const extendShowScrollingProps = (
   res: SmartStickyOptions,
-  props: SmartStickyProps
+  props: SmartStickyPartialOptions
 ) => {
   if (
     typeof props.show === 'undefined' ||
@@ -84,7 +84,7 @@ const extendShowScrollingProps = (
   }
 };
 
-const extendShowProps = (res: SmartStickyOptions, props: SmartStickyProps) => {
+const extendShowProps = (res: SmartStickyOptions, props: SmartStickyPartialOptions) => {
   if (typeof props.show === 'undefined') {
     return;
   }
@@ -103,7 +103,7 @@ const extendShowProps = (res: SmartStickyOptions, props: SmartStickyProps) => {
 };
 
 export const getExtendedOptions = (
-  props: SmartStickyProps
+  props: SmartStickyPartialOptions
 ): SmartStickyOptions => {
   const res: SmartStickyOptions = {
     ...defaults,

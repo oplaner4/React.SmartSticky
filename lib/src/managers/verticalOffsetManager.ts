@@ -14,12 +14,12 @@ export class VerticalOffsetManager {
   getFromTop() {
     return this.isCalculatedFromTop()
       ? (this._verticalOffset.top as number)
-      : 'auto';
+      : 0;
   }
 
   getFromBottom() {
     return this.isCalculatedFromTop()
-      ? 'auto'
+      ? 0
       : (this._verticalOffset.bottom as number);
   }
 }

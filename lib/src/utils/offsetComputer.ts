@@ -1,5 +1,5 @@
 const computeOffset = (elem: HTMLElement, top: boolean): number => {
-  let res = 0;
+  let res = top ? elem.offsetTop : elem.offsetLeft;
   let current = elem.offsetParent as HTMLElement | null;
 
   while (current !== null) {

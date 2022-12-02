@@ -11,7 +11,7 @@ import { MainManager } from './managers/mainManager';
 import styles from './styles.module.css';
 import { VerticalOffset } from 'managers/Managers.types';
 
-export interface SmartStickyProps {
+export interface SmartStickyPartialOptions {
   show?: {
     delay?: number;
     immediately?: boolean;
@@ -31,6 +31,13 @@ export interface SmartStickyProps {
   onActivated?: () => void;
 }
 
+export interface SmartStickyProps extends SmartStickyPartialOptions {
+  divProps?: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  >;
+}
+
 const SmartSticky = (
   props: React.PropsWithChildren<SmartStickyProps>
 ): JSX.Element => {
@@ -41,24 +48,30 @@ const SmartSticky = (
       return;
     }
 
+    const options = getExtendedOptions(props as SmartStickyPartialOptions);
+
     if (
       manager === null &&
+      options.enabled &&
       !ref.current.classList.contains(styles.smart_sticky)
     ) {
-      setManager(
-        new MainManager(ref.current, getExtendedOptions(props)).init()
-      );
+      setManager(new MainManager(ref.current, options).init());
     } else if (manager !== null) {
       manager.destroy();
-      setManager(
-        new MainManager(ref.current, getExtendedOptions(props)).init()
-      );
+
+      if (options.enabled) {
+        setManager(new MainManager(ref.current, options).init());
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
-  return <div ref={ref}>{props.children}</div>;
+  return (
+    <div ref={ref} {...props.divProps}>
+      {props.children}
+    </div>
+  );
 };
 
 export default SmartSticky;

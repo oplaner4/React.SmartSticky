@@ -1,6 +1,6 @@
-import { computeOffsetLeft } from './../utils/offsetComputer';
 import { SmartStickyOptions } from './../SmartSticky.types';
 import styles from '../styles.module.css';
+import { computeOffsetLeft } from '../utils/offsetComputer';
 
 export class SettingsManager {
   _options: SmartStickyOptions;
@@ -13,21 +13,27 @@ export class SettingsManager {
     this._elem = elem;
     this._elem.classList.add(styles.smart_sticky);
 
-    this._container =
-      options.container == null
-        ? (elem.parentElement as HTMLElement)
-        : options.container;
+    if (this._elem.parentElement === null) {
+      // should not happen
+      throw new Error(
+        'Unable to initialize SmartSticky. Element does not have parent.'
+      );
+    }
 
+    this._container =
+      options.container == null ? this._elem.parentElement : options.container;
     this._container.classList.add(styles.smart_sticky_container);
 
-    this._placeholder = elem.cloneNode(true) as HTMLDivElement;
+    this._placeholder = elem.cloneNode(false) as HTMLDivElement;
     this._placeholder.removeAttribute('id');
     this._placeholder.classList.add(styles.smart_sticky_placeholder);
     this._placeholder.classList.remove(styles.smart_sticky);
+    this._placeholder.style.left = '';
+    this._placeholder.style.width = '';
+    this._placeholder.style.top = '';
+    this._placeholder.style.bottom = '';
 
-    if (this._elem.parentElement !== null) {
-      this._elem.parentElement.insertBefore(this._placeholder, this._elem);
-    }
+    this._elem.parentElement.insertBefore(this._placeholder, this._elem);
 
     /* $('label', self._placeholder).removeAttr('for');
       $('input, select, textarea', self._placeholder)
@@ -76,7 +82,7 @@ export class SettingsManager {
   }
 
   preparePlaceholder() {
-    this.getPlaceholder().style.height = this.getElement().style.height;
+    this.getPlaceholder().style.height = `${this.getElement().offsetHeight}px`;
     return this;
   }
 }
