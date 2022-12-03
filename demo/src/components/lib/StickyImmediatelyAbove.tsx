@@ -1,5 +1,4 @@
-import SmartSticky from "../../../../lib/src";
-import { VerticalPosition } from "../../../../lib/src/SmartSticky.types";
+import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
 
 export const StickyImmediatelyAbove = ({ enabled }: { enabled: boolean }) => {
   return (

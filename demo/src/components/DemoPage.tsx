@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { StickyAboveOrigPosition } from "./lib/StickyAboveOrigPosition";
 import { StickyCustomBgAndPos } from "./lib/StickyCustomBgAndPos";
-
 import { StickyDefault } from "./lib/StickyDefault";
 import { StickyDelayed } from "./lib/StickyDelayed";
 import { StickyEnableOnBtnClick } from "./lib/StickyEnableOnBtnClick";

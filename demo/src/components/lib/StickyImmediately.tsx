@@ -1,4 +1,4 @@
-import SmartSticky from "../../../../lib/src";
+import { SmartSticky } from "@oplaner4/smart-sticky";
 
 export const StickyImmediately = ({ enabled }: { enabled: boolean }) => {
   return (

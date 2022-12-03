@@ -1,5 +1,5 @@
 {
-  "name": "@react/smart-sticky-demo",
+  "name": "@oplaner4/smart-sticky-demo",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@oplaner4/smart-sticky": "^1.0.2",
     "bootstrap": "^5.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",

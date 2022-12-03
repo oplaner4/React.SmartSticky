@@ -13,9 +13,9 @@ export interface SmartStickyProps extends SmartStickyPartialOptions {
   >;
 }
 
-const SmartSticky: React.FC<React.PropsWithChildren<SmartStickyProps>> = (
-  props: React.PropsWithChildren<SmartStickyProps>
-): JSX.Element => {
+export const SmartSticky: React.FC<
+  React.PropsWithChildren<SmartStickyProps>
+> = (props: React.PropsWithChildren<SmartStickyProps>): JSX.Element => {
   const ref = useRef<HTMLElement>(null);
   const [manager, setManager] = useState<MainManager | null>(null);
   useEffect(() => {
@@ -49,4 +49,10 @@ const SmartSticky: React.FC<React.PropsWithChildren<SmartStickyProps>> = (
   );
 };
 
-export default SmartSticky;
+export {
+  VerticalPosition,
+  VerticalOffset,
+  SmartStickyPartialOptions,
+} from './SmartSticky.types';
+
+export { computeOffsetLeft } from './utils/offsetComputer';

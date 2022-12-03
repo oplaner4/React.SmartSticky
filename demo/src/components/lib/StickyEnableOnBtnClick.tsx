@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import SmartSticky from "../../../../lib/src";
+import { SmartSticky } from "@oplaner4/smart-sticky";
 
 export const StickyEnableOnBtnClick = () => {
   const [enabled, setEnabled] = useState<boolean>(false);

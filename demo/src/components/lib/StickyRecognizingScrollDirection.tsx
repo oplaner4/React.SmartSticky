@@ -1,6 +1,5 @@
 import { useState } from "react";
-import SmartSticky from "../../../../lib/src";
-import { VerticalPosition } from "../../../../lib/src/SmartSticky.types";
+import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
 
 export const StickyRecognizingScrollDirection = ({ enabled }: { enabled: boolean }) => {
   const [scrollingDown, setScollingDown] = useState<boolean>(true);

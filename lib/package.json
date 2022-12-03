@@ -1,6 +1,6 @@
 {
-  "name": "@react/smart-sticky",
-  "version": "1.0.0",
+  "name": "@oplaner4/smart-sticky",
+  "version": "1.0.2",
   "keywords": [],
   "description": "React based Library with component to easily switch between original and fixed position with many customizations.",
   "main": "dist/index.min.js",
@@ -16,7 +16,6 @@
   },
   "homepage": "",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "start": "rollup -c rollup.config.js -w",
     "build": "tsc && rollup -c rollup.config.js && yarn make:docs",

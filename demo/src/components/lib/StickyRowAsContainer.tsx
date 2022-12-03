@@ -1,6 +1,4 @@
-import React from "react";
-import SmartSticky from "../../../../lib/src";
-import { computeOffsetLeft } from "../../../../lib/src/utils/offsetComputer";
+import { SmartSticky, computeOffsetLeft } from "@oplaner4/smart-sticky";
 
 export const StickyRowAsContainer = ({ enabled, rowContainer }: { enabled: boolean; rowContainer: HTMLDivElement }) => {
   return (

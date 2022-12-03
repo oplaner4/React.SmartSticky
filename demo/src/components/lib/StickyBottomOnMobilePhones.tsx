@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import SmartSticky, { SmartStickyPartialOptions } from "../../../../lib/src";
-import { VerticalPosition } from "../../../../lib/src/SmartSticky.types";
+import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
 
 export const StickyBottomOnMobilePhones = ({ enabled }: { enabled: boolean }) => {
   const bound = 768;
