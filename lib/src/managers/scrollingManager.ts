@@ -1,6 +1,6 @@
 export class ScrollingManager {
-  _lastScrollTop = 0;
-  _lastScrollingDown = true;
+  _lastScrollTop: number = 0;
+  _lastScrollingDown: boolean = true;
 
   scrollingDown() {
     if (this._lastScrollTop === this.getCurrentScrollTop()) {

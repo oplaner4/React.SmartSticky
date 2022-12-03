@@ -1,47 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  FixedPositionDeterminer,
-  SmartStickyFixedOptions,
-  SmartStickyPosition,
-  SmartStickyShowOriginalOptions,
-  SmartStickyShowScrollingOptions,
-} from './SmartSticky.types';
+
 import { getExtendedOptions } from './utils/optionsExtender';
 import { MainManager } from './managers/mainManager';
 import styles from './styles.module.css';
-import { VerticalOffset } from 'managers/Managers.types';
-
-export interface SmartStickyPartialOptions {
-  show?: {
-    delay?: number;
-    immediately?: boolean;
-    original?: Partial<SmartStickyShowOriginalOptions>;
-    fixed?:
-      | FixedPositionDeterminer
-      | Partial<VerticalOffset>
-      | SmartStickyPosition;
-    scrolling?: Partial<SmartStickyShowScrollingOptions>;
-  };
-  container?: HTMLElement | null;
-  fixed?: Partial<SmartStickyFixedOptions>;
-  enabled?: boolean;
-  onActivate?: () => void;
-  onDeactivate?: () => void;
-  onDeactivated?: () => void;
-  onActivated?: () => void;
-}
+import { SmartStickyPartialOptions } from './SmartSticky.types';
 
 export interface SmartStickyProps extends SmartStickyPartialOptions {
-  divProps?: React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
+  as?: string;
+  elemProps?: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLElement>,
+    HTMLElement
   >;
 }
 
-const SmartSticky = (
+const SmartSticky: React.FC<React.PropsWithChildren<SmartStickyProps>> = (
   props: React.PropsWithChildren<SmartStickyProps>
 ): JSX.Element => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [manager, setManager] = useState<MainManager | null>(null);
   useEffect(() => {
     if (ref === null || ref.current === null) {
@@ -67,10 +42,10 @@ const SmartSticky = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
-  return (
-    <div ref={ref} {...props.divProps}>
-      {props.children}
-    </div>
+  return React.createElement(
+    props.as ?? 'div',
+    { ref, ...props.elemProps },
+    props.children
   );
 };
 

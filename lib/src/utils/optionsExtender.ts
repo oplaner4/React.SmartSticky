@@ -1,6 +1,8 @@
-import { SmartStickyOptions } from '../SmartSticky.types';
+import {
+  SmartStickyOptions,
+  SmartStickyPartialOptions,
+} from '../SmartSticky.types';
 import { defaults } from '../immutable';
-import { SmartStickyPartialOptions } from '../index';
 
 const extendAtomicProps = (
   res: SmartStickyOptions,
@@ -31,7 +33,10 @@ const extendAtomicProps = (
   }
 };
 
-const extendFixedProps = (res: SmartStickyOptions, props: SmartStickyPartialOptions) => {
+const extendFixedProps = (
+  res: SmartStickyOptions,
+  props: SmartStickyPartialOptions
+) => {
   if (typeof props.fixed === 'undefined') {
     return;
   }
@@ -84,7 +89,10 @@ const extendShowScrollingProps = (
   }
 };
 
-const extendShowProps = (res: SmartStickyOptions, props: SmartStickyPartialOptions) => {
+const extendShowProps = (
+  res: SmartStickyOptions,
+  props: SmartStickyPartialOptions
+) => {
   if (typeof props.show === 'undefined') {
     return;
   }
@@ -97,8 +105,8 @@ const extendShowProps = (res: SmartStickyOptions, props: SmartStickyPartialOptio
     res.show.immediately = props.show.immediately;
   }
 
-  if (typeof props.show.fixed !== 'undefined') {
-    res.show.fixed = props.show.fixed;
+  if (typeof props.show.placement !== 'undefined') {
+    res.show.placement = props.show.placement;
   }
 };
 

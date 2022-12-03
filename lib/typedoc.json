@@ -1,6 +1,6 @@
 {
   "out": "docs",
-  "entryPoints": ["./src"],
+  "entryPoints": ["./src/index.tsx", "./src/SmartSticky.types.ts"],
   "exclude": "**/**/*+(.spec|.test).**",
   "theme": "default",
   "includeVersion": true,

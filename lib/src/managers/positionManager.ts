@@ -1,7 +1,7 @@
 import { computeOffsetTop } from './../utils/offsetComputer';
 import { windowScrollingManager } from './scrollingManager';
 import { positions } from '../immutable';
-import { VerticalOffset } from './Managers.types';
+import { VerticalOffset } from '../SmartSticky.types';
 import { VerticalOffsetManager } from './verticalOffsetManager';
 import { SettingsManager } from './settingsManager';
 import styles from '../styles.module.css';
@@ -123,25 +123,49 @@ export class PositionManager {
 
   canBeShownDueToScrolling() {
     if (windowScrollingManager.scrollingDown()) {
-      if (this.getSettingsManager().getOptions().show.scrolling.down) {
-        return true;
+      let down = this.getSettingsManager().getOptions().show.scrolling.down;
+
+      if (typeof down === 'function') {
+        down = down(
+          windowScrollingManager.scrollingDown(),
+          this.getSettingsManager().getElement(),
+          this.getSettingsManager().getContainer()
+        );
       }
-    } else if (this.getSettingsManager().getOptions().show.scrolling.up) {
-      return true;
+
+      return down;
     }
 
-    return false;
+    let up = this.getSettingsManager().getOptions().show.scrolling.up;
+
+    if (typeof up === 'function') {
+      up = up(
+        windowScrollingManager.scrollingDown(),
+        this.getSettingsManager().getElement(),
+        this.getSettingsManager().getContainer()
+      );
+    }
+
+    return up;
   }
 
   prepareFixedPosition() {
-    let p = this.getSettingsManager().getOptions().show.fixed;
+    let p = this.getSettingsManager().getOptions().show.placement;
 
     if (typeof p === 'function') {
-      p = p(windowScrollingManager.scrollingDown());
+      p = p(
+        windowScrollingManager.scrollingDown(),
+        this.getSettingsManager().getElement(),
+        this.getSettingsManager().getContainer()
+      );
     }
 
     while (typeof p === 'number' && p in positions) {
-      p = positions[p](windowScrollingManager.scrollingDown());
+      p = positions[p](
+        windowScrollingManager.scrollingDown(),
+        this.getSettingsManager().getElement(),
+        this.getSettingsManager().getContainer()
+      );
     }
 
     this._verticalOffsetManagerInstance = new VerticalOffsetManager(

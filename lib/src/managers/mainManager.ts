@@ -11,7 +11,7 @@ export class MainManager {
   _windowOnScroll!: () => void;
   _initialized: boolean = false;
 
-  constructor(elem: HTMLDivElement, options: SmartStickyOptions) {
+  constructor(elem: HTMLElement, options: SmartStickyOptions) {
     this._settingsManagerInstance = new SettingsManager(options, elem);
     this._positionManagerInstance = new PositionManager(
       this.getSettingsManager()
@@ -35,21 +35,30 @@ export class MainManager {
   init() {
     const self = this;
 
-    this._windowOnScroll = () => {
+    self._windowOnScroll = () => {
       self.adjustToCurrentScrollTop();
     };
-    addEventListener('scroll', this._windowOnScroll);
 
-    this._windowOnResize = () => {
+    self._windowOnResize = () => {
       self.getPositionManager().setOrigPosition();
       self.getSettingsManager().preparePlaceholder();
+
+      if (
+        self.getSettingsManager().getElement() instanceof
+        HTMLTableSectionElement
+      ) {
+        self.adjustTableHeader();
+      }
+
+      self._windowOnScroll();
     };
 
-    addEventListener('resize', this._windowOnResize);
-    this._windowOnResize();
+    addEventListener('resize', self._windowOnResize);
+    addEventListener('scroll', self._windowOnScroll);
+    self._windowOnResize();
 
-    this._initialized = true;
-    return this;
+    self._initialized = true;
+    return self;
   }
 
   getPositionManager() {
@@ -58,6 +67,22 @@ export class MainManager {
 
   getSettingsManager() {
     return this._settingsManagerInstance;
+  }
+
+  private adjustTableHeader() {
+    const placeholder = this.getSettingsManager().getPlaceholder();
+    const elem = this.getSettingsManager().getElement();
+
+    for (let rowInx = 0; rowInx < elem.children.length; rowInx++) {
+      const elemThs = elem.children[rowInx].children;
+      const placeholderThs = placeholder.children[rowInx].children;
+
+      for (let i = 0; i < elemThs.length; i++) {
+        const elemTh = elemThs[i] as HTMLTableCaptionElement;
+        const placeholderTh = placeholderThs[i] as HTMLTableCaptionElement;
+        elemTh.style.width = `${placeholderTh.offsetWidth}px`;
+      }
+    }
   }
 
   private adjustToCurrentScrollTop() {

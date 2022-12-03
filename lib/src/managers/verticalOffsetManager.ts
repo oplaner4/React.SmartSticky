@@ -1,4 +1,4 @@
-import { VerticalOffset } from './Managers.types';
+import { VerticalOffset } from '../SmartSticky.types';
 
 export class VerticalOffsetManager {
   _verticalOffset: Partial<VerticalOffset>;

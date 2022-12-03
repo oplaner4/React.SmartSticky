@@ -1,20 +1,22 @@
 import { SmartStickyOptions } from './../SmartSticky.types';
 import styles from '../styles.module.css';
 import { computeOffsetLeft } from '../utils/offsetComputer';
+import { identityAttributes } from '../immutable';
+import { windowScrollingManager } from './scrollingManager';
 
 export class SettingsManager {
   _options: SmartStickyOptions;
   _container: HTMLElement;
-  _elem: HTMLDivElement;
-  _placeholder: HTMLDivElement;
+  _elem: HTMLElement;
+  _placeholder: HTMLElement;
 
-  constructor(options: SmartStickyOptions, elem: HTMLDivElement) {
+  constructor(options: SmartStickyOptions, elem: HTMLElement) {
     this._options = options;
     this._elem = elem;
     this._elem.classList.add(styles.smart_sticky);
 
     if (this._elem.parentElement === null) {
-      // should not happen
+      // bad, should not happen
       throw new Error(
         'Unable to initialize SmartSticky. Element does not have parent.'
       );
@@ -24,7 +26,7 @@ export class SettingsManager {
       options.container == null ? this._elem.parentElement : options.container;
     this._container.classList.add(styles.smart_sticky_container);
 
-    this._placeholder = elem.cloneNode(false) as HTMLDivElement;
+    this._placeholder = elem.cloneNode(true) as HTMLElement;
     this._placeholder.removeAttribute('id');
     this._placeholder.classList.add(styles.smart_sticky_placeholder);
     this._placeholder.classList.remove(styles.smart_sticky);
@@ -32,13 +34,18 @@ export class SettingsManager {
     this._placeholder.style.width = '';
     this._placeholder.style.top = '';
     this._placeholder.style.bottom = '';
-
+    this.removeIdentityAttributes(this._placeholder);
     this._elem.parentElement.insertBefore(this._placeholder, this._elem);
+  }
 
-    /* $('label', self._placeholder).removeAttr('for');
-      $('input, select, textarea', self._placeholder)
-        .removeAttr('name')
-        .removeAttr('id'); */
+  private removeIdentityAttributes(root: Element) {
+    identityAttributes.forEach((attr) => {
+      root.removeAttribute(attr);
+    });
+
+    for (let i = 0; i < root.children.length; i++) {
+      this.removeIdentityAttributes(root.children[i]);
+    }
   }
 
   getElement() {
@@ -56,6 +63,14 @@ export class SettingsManager {
   getFixedLeft() {
     let l = this.getOptions().fixed.left;
 
+    if (typeof l === 'function') {
+      l = l(
+        windowScrollingManager.scrollingDown(),
+        this.getElement(),
+        this.getContainer()
+      );
+    }
+
     if (typeof l === 'string') {
       return l;
     }
@@ -70,8 +85,20 @@ export class SettingsManager {
   getFixedWidth() {
     let w = this.getOptions().fixed.width;
 
+    if (typeof w === 'function') {
+      w = w(
+        windowScrollingManager.scrollingDown(),
+        this.getElement(),
+        this.getContainer()
+      );
+    }
+
+    if (typeof w === 'string') {
+      return w;
+    }
+
     if (w === null) {
-      w = this._placeholder.clientWidth;
+      w = this.getElement().offsetWidth;
     }
 
     return `${w}px`;

@@ -8,7 +8,6 @@
 
   .smart_sticky.smart_sticky_active {
       z-index: 1048;
-      padding: .5rem 15px;
       -webkit-box-shadow: 0 0rem 2rem rgba(0,0,0,.15);
       box-shadow: 0 0rem 2rem rgba(0,0,0,.15);
       -webkit-transition: opacity .1s ease-in-out;
@@ -17,6 +16,10 @@
       margin: 0;
       position: fixed;
   }
+
+      .smart_sticky.smart_sticky.smart_sticky_active:not(thead) {
+        padding: .5rem .7rem;
+      }
 
       .smart_sticky.smart_sticky_active.smart_sticky_invisible, .smart_sticky_placeholder {
           opacity: 0;
