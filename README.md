@@ -7,13 +7,13 @@ React based Library with component to easily switch between original and fixed p
 ```bash
 npm install -g yarn
 cd lib
-yarn install smart-sticky
+yarn install @oplaner4/smart-sticky
 ```
 
 ## Usage
 
 ```typescript
-import SmartSticky from "smart-sticky";
+import { SmartSticky } from "@oplaner4/smart-sticky";
 
 export const StickyExample = () => {
   return (
