@@ -1,8 +1,8 @@
 {
-  "name": "smart-sticky",
+  "name": "@react/smart-sticky",
   "version": "1.0.0",
   "keywords": [],
-  "description": "Library with React component to easily switch between original and fixed position with many customizations.",
+  "description": "React based Library with component to easily switch between original and fixed position with many customizations.",
   "main": "dist/index.min.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
