@@ -164,6 +164,10 @@ export interface SmartStickyPartialOptions {
       | VerticalOffsetDeterminer
       | Partial<VerticalOffset>
       | VerticalPosition;
+    /**
+     * Options which determine visibility of the element dependent
+     * on the scroll direction.
+     */
     scrolling?: Partial<ShowScrollingOptions>;
   };
 

@@ -2,25 +2,37 @@
 
 Based on **React Typescript Library Template** - template to create a react component / library with Typescript.
 
-- React
-- Typescript
-- Rollup
-- Css Modules
-- Jest with code coverage report
-- `Typedoc` for API documentation
-- `commitlint` for conventional-commits
-- `Prettier` and `ESLint` integration with git hooks
-- Optional `example app` generation for testing
-- `Github Pages` integration
-- Release-Please workflow
-
 ## Install
 
-Install the deps:
+```
+npm install -g yarn
+yarn install @oplaner4/smart-sticky
+```
+
+## Usage
+
+```typescript
+import { SmartSticky } from "@oplaner4/smart-sticky";
+
+export const StickyExample = () => {
+  return (
+    <SmartSticky>
+      <h5>My Sticky content</h5>
+    </SmartSticky>
+  );
+};
+```
+
+## Demo
 
 ```
+git clone https://github.com/oplaner4/React.SmartSticky
+cd demo
 yarn install
+yarn start
 ```
+
+See components in ./demo/src/lib/*
 
 ## Development
 
