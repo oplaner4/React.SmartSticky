@@ -75,12 +75,64 @@ For additional information visit this [README](https://github.com/oplaner4/React
 
 ### Exported members
 
-* **SmartSticky** (the most important member, React component)
-* SmartStickyProps (properties used by SmartSticky)
-* **VerticalPosition** (allows to define vertical position such as top or bottom)
-* VerticalOffset (allows to define custom vertical position),
-* SmartStickyPartialOptions (options which might or might not be changed)
-* computeOffsetLeft (utility for computing total offset left)
+* **SmartSticky** *(the most important member, React component)*
+* SmartStickyProps *(properties used by SmartSticky)*
+* **VerticalPosition** *(allows to define vertical position such as top or bottom)*
+* VerticalOffset *(allows to define custom vertical position)*
+* SmartStickyPartialOptions *(options which might or might not be changed)*
+* computeOffsetLeft *(utility for computing total offset left)*
+
+### SmartSticky properties
+
+**All** properties are **optional**.
+
+#### as
+* type: `string`
+* default value: `'div'`
+
+Render component as a specific element such as `'h4'` or `'span'`. Usable for tables and fixed table header (`'thead'`).
+
+#### elemProps
+* type: `React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>`
+* default value: `undefined`
+
+Specify element's properties such as `id` or `className`.
+
+#### enabled
+* type: `boolean`
+* default value: `true`
+
+Enable or disable whole functionality of `SmartSticky` component.
+
+#### container
+* type: `HTMLElement | null`
+* default value: `null`
+
+Set offset container. The fixed element is visible only inside of container area. If `null` (default), the element's parent is used.
+
+#### onActivate
+* type: ` () => void`
+* default value: ` () => null`
+
+Handler which is called when an element is going to be fixed.
+
+#### onActivated
+* type: ` () => void`
+* default value: ` () => null`
+
+Handler which is called when an element has been fixed.
+
+#### onDeactivate
+* type: ` () => void`
+* default value: ` () => null`
+
+Handler which is called when the original position is going to be set.
+
+#### onDeactivated
+* type: ` () => void`
+* default value: ` () => null`
+
+Handler which is called when the original position has been set.
 
 ### Detailed
 
