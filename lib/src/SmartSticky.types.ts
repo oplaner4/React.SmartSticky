@@ -1,6 +1,7 @@
 export type Determiner<T> = (
   /**
-   * Window vertical scroll increases.
+   * True if window vertical scroll increases,
+   * otherwise false.
    */
   scrollingDown: boolean,
   /**
