@@ -46,7 +46,7 @@ export interface ShowOriginalOptions {
   /**
    * Determines if the fixed element can be
    * be shown above its original position.
-   * 'true' by default.
+   * 'false' by default.
    */
   above: boolean;
 }
