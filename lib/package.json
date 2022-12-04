@@ -1,6 +1,6 @@
 {
   "name": "@oplaner4/smart-sticky",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [],
   "description": "React based Library with component to easily switch between original and fixed position with many customizations.",
   "main": "dist/index.min.js",
@@ -14,7 +14,7 @@
     "url": "https://github.com/oplaner4/React.SmartSticky",
     "type": "git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/oplaner4/React.SmartSticky",
   "license": "MIT",
   "scripts": {
     "start": "rollup -c rollup.config.js -w",

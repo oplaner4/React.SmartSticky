@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import SmartSticky from '../index';
+import { SmartSticky } from '../index';
 
 const smartStickyRootClass = '.smart_sticky';
 

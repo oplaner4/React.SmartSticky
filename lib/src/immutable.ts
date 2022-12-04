@@ -1,7 +1,7 @@
 import {
   VerticalOffsetDeterminer,
   SmartStickyOptions,
-  VerticalPosition,
+  VerticalPlacement,
 } from './SmartSticky.types';
 
 export const defaults: SmartStickyOptions = {
@@ -12,7 +12,7 @@ export const defaults: SmartStickyOptions = {
       under: true,
       above: false,
     },
-    placement: VerticalPosition.Top,
+    placement: VerticalPlacement.Top,
     scrolling: {
       up: true,
       down: true,
@@ -40,14 +40,14 @@ export const identityAttributes = ['id', 'for', 'name'];
 
 export const positions: Record<number, VerticalOffsetDeterminer> = {};
 
-positions[VerticalPosition.Top] = (_) => {
+positions[VerticalPlacement.Top] = (_) => {
   return { top: 0 };
 };
 
-positions[VerticalPosition.Bottom] = (_) => {
+positions[VerticalPlacement.Bottom] = (_) => {
   return { bottom: 0 };
 };
 
-positions[VerticalPosition.Toggle] = (scrollingDown) => {
-  return scrollingDown ? VerticalPosition.Top : VerticalPosition.Bottom;
+positions[VerticalPlacement.Toggle] = (scrollingDown) => {
+  return scrollingDown ? VerticalPlacement.Top : VerticalPlacement.Bottom;
 };

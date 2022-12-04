@@ -3,7 +3,7 @@ import { getExtendedOptions } from '../../utils/optionsExtender';
 import { defaults } from '../../immutable';
 import {
   SmartStickyPartialOptions,
-  VerticalPosition,
+  VerticalPlacement,
 } from '../../SmartSticky.types';
 
 describe('utils/optionsExtender', () => {
@@ -43,7 +43,7 @@ describe('utils/optionsExtender', () => {
           under: false,
           above: true,
         },
-        placement: VerticalPosition.Bottom,
+        placement: VerticalPlacement.Bottom,
         scrolling: {
           up: false,
           down: false,

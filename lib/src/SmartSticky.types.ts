@@ -30,7 +30,7 @@ export interface VerticalOffset {
 }
 
 export type VerticalOffsetDeterminer = Determiner<
-  Partial<VerticalOffset> | VerticalPosition
+  Partial<VerticalOffset> | VerticalPlacement
 >;
 
 export type CssOffsetValue = number | string | null;
@@ -74,7 +74,7 @@ export interface ShowOptions {
   placement:
     | VerticalOffsetDeterminer
     | Partial<VerticalOffset>
-    | VerticalPosition;
+    | VerticalPlacement;
   original: ShowOriginalOptions;
   scrolling: ShowScrollingOptions;
 }
@@ -117,7 +117,7 @@ export interface SmartStickyOptions {
  * Predefined vertical positions the fixed element
  * can have.
  */
-export enum VerticalPosition {
+export enum VerticalPlacement {
   // eslint-disable-next-line no-unused-vars
   Top = 0,
   // eslint-disable-next-line no-unused-vars
@@ -164,7 +164,7 @@ export interface SmartStickyPartialOptions {
     placement?:
       | VerticalOffsetDeterminer
       | Partial<VerticalOffset>
-      | VerticalPosition;
+      | VerticalPlacement;
     /**
      * Options which determine visibility of the element dependent
      * on the scroll direction.

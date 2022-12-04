@@ -76,8 +76,8 @@ For additional information visit this [README](https://github.com/oplaner4/React
 ### Exported members
 
 * **SmartSticky** *(the most important member, React component)*
+* **VerticalPlacement** *(allows to define vertical position such as top or bottom)*
 * SmartStickyProps *(properties used by SmartSticky)*
-* **VerticalPosition** *(allows to define vertical position such as top or bottom)*
 * VerticalOffset *(allows to define custom vertical position)*
 * SmartStickyPartialOptions *(options which might or might not be changed)*
 * computeOffsetLeft *(utility for computing total offset left)*
@@ -98,6 +98,16 @@ Render component as a specific element such as `'h4'` or `'span'`. Usable for ta
 
 Specify element's properties such as `id` or `className`.
 
+#### show
+* type: `ShowOptions`
+
+Used like:
+```typescript
+<SmartSticky {{ show: { delay: 10 }}}></SmartSticky>
+```
+
+See all properties in [Show options](#show-options) section.
+
 #### enabled
 * type: `boolean`
 * default value: `true`
@@ -111,28 +121,53 @@ Enable or disable whole functionality of `SmartSticky` component.
 Set offset container. The fixed element is visible only inside of container area. If `null` (default), the element's parent is used.
 
 #### onActivate
-* type: ` () => void`
-* default value: ` () => null`
+* type: `() => void`
+* default value: `() => null`
 
 Handler which is called when an element is going to be fixed.
 
 #### onActivated
-* type: ` () => void`
-* default value: ` () => null`
+* type: `() => void`
+* default value: `() => null`
 
 Handler which is called when an element has been fixed.
 
 #### onDeactivate
-* type: ` () => void`
-* default value: ` () => null`
+* type: `() => void`
+* default value: `() => null`
 
 Handler which is called when the original position is going to be set.
 
 #### onDeactivated
-* type: ` () => void`
-* default value: ` () => null`
+* type: `() => void`
+* default value: `() => null`
 
 Handler which is called when the original position has been set.
+
+### Show options
+
+**All** properties are **optional**.
+
+#### delay
+* type: `number`
+* default value: `0`
+
+Value (in px) which postpones fixing of the element and accelerates setting of the original position, respectively. Use zero to deactivate.
+
+#### immediately
+* type: `boolean`
+* default value: `false`
+
+Determine if the element becomes fixed immediately when its original position is reached. If set to `true`, option `delay` is ignored.
+
+
+#### placement
+* type: `VerticalOffsetDeterminer | Partial<VerticalOffset> | VerticalPlacement`
+* default value: `VerticalPlacement.Top`
+
+Specify (vertical) placement of the fixed element. If it is callback, its return value is processed.
+
+
 
 ### Detailed
 

@@ -50,7 +50,7 @@ export const SmartSticky: React.FC<
 };
 
 export {
-  VerticalPosition,
+  VerticalPlacement,
   VerticalOffset,
   SmartStickyPartialOptions,
 } from './SmartSticky.types';
