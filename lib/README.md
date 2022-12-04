@@ -101,9 +101,9 @@ Specify element's properties such as `id` or `className`.
 #### show
 * type: `ShowOptions`
 
-Used like:
+Can be specified like:
 ```typescript
-<SmartSticky {{ show: { delay: 10 }}}></SmartSticky>
+<SmartSticky show={{ delay: 10 }}></SmartSticky>
 ```
 
 See all properties in [Show options](#show-options) section.
