@@ -20,7 +20,7 @@ Based on [React Typescript Library Template](https://github.com/alioguzhan/react
 React.SmartSticky library supports:
 
 * Highly customizable visibility and placement of the fixed element.
-* Toggling between top and bottom position.
+* Toggling between top and bottom placement.
 * Displaying of the fixed element only inside of container area.
 * Implementation of own handlers and positions.
 * Fixed header in tables.
