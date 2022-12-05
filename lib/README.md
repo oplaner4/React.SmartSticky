@@ -1,6 +1,6 @@
 # React.SmartSticky library
 
-Based on [React Typescript Library Template](https://github.com/alioguzhan/react-typescript-library).
+React based Library with component `SmartSticky` which allows to easily switch between original and fixed position with many customizations.
 
 ## Contents
 
@@ -367,6 +367,8 @@ yarn make:docs
 ## Author
 
 Developed by Ondrej Planer ([oplaner4@gmail.com](mailto:oplaner4@gmail.com)).
+
+Based on [React Typescript Library Template](https://github.com/alioguzhan/react-typescript-library).
 
 ## License
 
