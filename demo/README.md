@@ -1,10 +1,8 @@
 # React.SmartSticky demonstration
 
-Contains examples of **SmartSticky** component and explains functionality of the library *(@oplaner4/smart-sticky)*.
+Contains examples of `SmartSticky` component, located in `./src/components/lib` folder, and explains **functionality** of the library *(@oplaner4/smart-sticky)*.
 
 `DemoPage` component is located in `./src/components`.
-
-Example `SmartSticky` components are located in `./src/components/lib` folder.
 
 ## Prerequisites
 
@@ -32,7 +30,7 @@ Use following commands:
 
 ### Run locally
 
-```
+```bash
 npm run start
 
 /* or with yarn */
@@ -44,9 +42,9 @@ Launches **demonstration page** at [http://localhost:3000/](http://localhost:300
 
 ### Build for production
 
-Yarn package manager is **required**.
+Yarn package manager is **required** for correct build.
 
-```
+```bash
 yarn build
 ```
 
