@@ -209,7 +209,7 @@ Determines if the element becomes fixed immediately when its original position i
 * type: `VerticalOffsetDeterminer | Partial<VerticalOffset> | VerticalPlacement`
 * default value: `VerticalPlacement.Top`
 
-Specifies (vertical) placement of the fixed element. If it is callback, its return value is processed. Custom placement can be defined via `Partial<VerticalOffset>`, described in [Verticaloffset](#vertical-offset) section.
+Specifies (vertical) placement of the fixed element. If it is callback, its return value is processed. Custom placement can be defined via `Partial<VerticalOffset>`, described in [Vertical offset](#verticaloffset) section.
 
 #### original
 * type: `Partial<ShowOriginalOptions>`
