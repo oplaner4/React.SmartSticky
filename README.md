@@ -26,7 +26,7 @@ React powered demonstrations of the `SmartSticky` component and functionality of
 
 Located in `./demo` folder. This package is not intended to be published.
 
-Start demo page by `yarn start`
+Start demo page using `yarn start`.
 
 Example `SmartSticky` components are located in `./demo/src/components/lib` folder.
 
