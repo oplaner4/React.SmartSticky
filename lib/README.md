@@ -298,7 +298,20 @@ Sets style `left` property of the fixed element. If it is callback, its return v
 * type: `(elem: HTMLElement) => number`
 * default value: `null`
 
-Utility which helps with computing of total offset left across offset parrents. It may be useful for left property in [Fixed options](#fixed-options).
+Utility which helps with computing of total offset left across offset parrents. It may be useful for `left` property in [Fixed options](#fixed-options).
+
+### VerticalPlacement
+
+Enum which specifies vertical placement of the fixed element.
+
+Predefined values:
+* Top *(VerticalPlacement.Top)*
+* Bottom *(VerticalPlacement.Bottom)*
+* Toggle *(VerticalPlacement.Toggle)*
+
+#### VerticalPlacement.Toggle
+
+Places element `Top` while scrolling down and `Bottom` while **scrolling up**. If used, properties `up` and `down` in [Show scrolling options](#show-scrolling-options) should be set to `true`.
 
 ### Detailed docs
 
