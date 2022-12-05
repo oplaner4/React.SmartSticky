@@ -27,7 +27,7 @@ React.SmartSticky library supports:
 
 ## Prerequisites
 
-* Installed [NodeJS](https://nodejs.org/en/) environment in minimal version 12 or higher.
+* Installed [NodeJS](https://nodejs.org/en/) environment (version 12 or higher).
 * **For development:** installed [Yarn package manager](https://yarnpkg.com/getting-started/install#initializing-your-project).
 
 ## Installation
@@ -126,7 +126,6 @@ Renders component as a specific element such as `'h4'` or `'span'`. Usable for t
 
 #### elemProps
 * type: `React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>`
-* default value: `undefined`
 
 Specifies element's basic properties such as `id` or `className`.
 
