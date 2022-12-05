@@ -2,6 +2,29 @@
 
 Based on [React Typescript Library Template](https://github.com/alioguzhan/react-typescript-library).
 
+## Contents
+
+* [Contents](#contents)
+* [Features](#features)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Basic usage](#basic-usage)
+* [Demo](#demo)
+* [Docs and options](#docs-and-options)
+* [Development](#development)
+* [Author](#author)
+* [License](#license)
+
+## Features
+
+React.SmartSticky library supports:
+
+* Highly customizable visibility and placement of the fixed element.
+* Toggling between top and bottom position.
+* Displaying of the fixed element only inside of container area.
+* Implementation of own handlers and positions.
+* Fixed header in tables.
+
 ## Prerequisites
 
 * Installed [NodeJS](https://nodejs.org/en/) environment in minimal version 12 or higher.
@@ -83,7 +106,7 @@ This launches **demo page** at [http://localhost:3000/](http://localhost:3000/).
 
 For additional information visit this [README](https://github.com/oplaner4/React.SmartSticky/tree/master/demo#reactsmartsticky-demonstration).
 
-## Docs
+## Docs and options
 
 ### Exported members
 
@@ -108,12 +131,12 @@ Renders component as a specific element such as `'h4'` or `'span'`. Usable for t
 * type: `React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>`
 * default value: `undefined`
 
-Specifies element's properties such as `id` or `className`.
+Specifies element's basic properties such as `id` or `className`.
 
 #### show
 * type: `Partial<ShowOptions>`
 
-Options connected with visibility and vertical placement of the element.
+Options connected with **visibility** and vertical **placement** of the element.
 
 Can be specified like:
 ```typescript
@@ -126,13 +149,13 @@ See all properties in [Show options](#show-options) section.
 * type: `boolean`
 * default value: `true`
 
-Enables or disables whole functionality of `SmartSticky` component. If `false`, it is disabled and renders ordinary element.
+Enables or disables whole functionality of `SmartSticky` component. If `false`, it is disabled and thus renders ordinary element.
 
 #### container
 * type: `HTMLElement | null`
 * default value: `null`
 
-Sets offset container. The fixed element is visible only inside of container area. If `null` (default), the element's parent is used.
+Sets offset container. The fixed element is visible only inside of container area. If `null`, the element's parent is used. You may also need to specify [Fixed options](#fixed-options) via [fixed](#fixed) property.
 
 #### fixed
 * type: `Partial<FixedOptions>`
@@ -272,13 +295,19 @@ Sets style `width` property of the fixed element. If it is callback, its return 
 * type: `CssOffsetValue | HorizontalOffsetDeterminer`
 * default value: `null`
 
-Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used.
+Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used. You can use `computeOffsetLeft` utility.
 
-## Detailed docs
+### computeOffsetLeft
+* type: `(elem: HTMLElement) => number`
+* default value: `null`
+
+Utility which helps with computing of total offset left across offset parrents. It may be useful for left property in [Fixed options](#fixed-options).
+
+### Detailed docs
 
 Note: Yarn package manager is required.
 
-Generate detailed documentation using these commands:
+Generate **detailed documentation** using these commands:
 
 ```bash
 git clone https://github.com/oplaner4/React.SmartSticky
@@ -288,14 +317,13 @@ yarn make:docs
 cd ./docs
 ```
 
-And then open **index.html** in the current working directory using your browser.
-
+And then just open **index.html** in the current working directory using your browser.
 
 ## Development
 
-Note: Yarn package manager is required.
+Note: Yarn package manager is **required** for correct behaviour.
 
-```
+```bash
 yarn start
 ```
 
@@ -305,7 +333,7 @@ This will watch your changes and reloads the server.
 
 Run:
 
-```
+```bash
 yarn build
 ```
 
@@ -315,7 +343,7 @@ This will create your compiled files under `./dist` folder. And generates a docu
 
 Jest is configured and ready to use. Just run:
 
-```
+```bash
 yarn test
 ```
 
@@ -323,7 +351,7 @@ yarn test
 
 Can be generated using following command. Creates `./dist` folder.
 
-```
+```bash
 yarn make:docs
 ```
 
