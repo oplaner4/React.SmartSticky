@@ -28,10 +28,7 @@ React.SmartSticky library supports:
 ## Prerequisites
 
 * Installed [NodeJS](https://nodejs.org/en/) environment in minimal version 12 or higher.
-
-### Development
-
-* Installed [Yarn package manager](https://yarnpkg.com/getting-started/install#initializing-your-project).
+* **For development:** installed [Yarn package manager](https://yarnpkg.com/getting-started/install#initializing-your-project).
 
 ## Installation
 
