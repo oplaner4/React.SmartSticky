@@ -60,6 +60,18 @@ For **all customizations** and **many other examples** check following section(s
 There is an independent **React app** in the [source repository](https://github.com/oplaner4/React.SmartSticky) with **demo page** and example `SmartSticky` components.
 
 Start app using these commands:
+
+### With npm
+
+```bash
+git clone https://github.com/oplaner4/React.SmartSticky
+cd ./React.SmartSticky/demo
+npm install
+npm run start
+```
+
+### With yarn
+
 ```bash
 git clone https://github.com/oplaner4/React.SmartSticky
 cd ./React.SmartSticky/demo
@@ -67,7 +79,7 @@ yarn install
 yarn start
 ```
 
-Launches **demo page** at [http://localhost:3000/](http://localhost:3000/). Port (3000 by default) might be different when there is other running application (check console).
+This launches **demo page** at [http://localhost:3000/](http://localhost:3000/). Port (3000 by default) might be different when there is other running application (check console).
 
 For additional information visit this [README](https://github.com/oplaner4/React.SmartSticky/tree/master/demo#reactsmartsticky-demonstration).
 
@@ -262,7 +274,11 @@ Sets style `width` property of the fixed element. If it is callback, its return 
 
 Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used.
 
-### Detailed
+## Detailed docs
+
+Note: Yarn package manager is required.
+
+Generate detailed documentation using these commands:
 
 ```bash
 git clone https://github.com/oplaner4/React.SmartSticky
@@ -272,10 +288,12 @@ yarn make:docs
 cd ./docs
 ```
 
-And open **index.html** in the current working directory using your browser.
+And then open **index.html** in the current working directory using your browser.
 
 
 ## Development
+
+Note: Yarn package manager is required.
 
 ```
 yarn start
