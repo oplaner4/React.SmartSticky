@@ -108,11 +108,11 @@ For additional information visit this [README](https://github.com/oplaner4/React
 ### Exported members
 
 * **SmartSticky** *(the most important member, React component)*
-* **VerticalPlacement** *(allows to define vertical placement such as top or bottom)*
+* [VerticalPlacement](#verticalplacement) *(allows to define vertical placement such as top or bottom)*
+* [VerticalOffset](#verticaloffset) *(allows to define custom vertical placement)*
+* [computeOffsetLeft](#computeoffsetleft) *(utility for computing total offset left)*
 * SmartStickyProps *(properties used by SmartSticky)*
-* VerticalOffset *(allows to define custom vertical placement)*
-* SmartStickyPartialOptions *(options which might or might not be changed)*
-* computeOffsetLeft *(utility for computing total offset left)*
+* SmartStickyPartialOptions *(options which might or might not be specified)*
 
 ### SmartSticky properties
 
@@ -264,7 +264,34 @@ Determines if the fixed element can be shown while scrolling up. If it is callba
 
 Determines if the fixed element can be shown while scrolling down. If it is callback, its return value is used.
 
-### Vertical offset
+### Fixed options
+
+#### width
+* type: `CssOffsetValue | HorizontalOffsetDeterminer`
+* default value: `null`
+
+Sets style `width` property of the fixed element. If it is callback, its return value is processed, as further described. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset width in the original position is used.
+
+#### left
+* type: `CssOffsetValue | HorizontalOffsetDeterminer`
+* default value: `null`
+
+Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used. You can use `computeOffsetLeft` utility.
+
+### VerticalPlacement
+
+Enum which specifies vertical placement of the fixed element.
+
+Predefined values:
+* Top *(VerticalPlacement.Top)*
+* Bottom *(VerticalPlacement.Bottom)*
+* Toggle *(VerticalPlacement.Toggle)*
+
+#### Toggle
+
+Places element `Top` while scrolling down and `Bottom` while **scrolling up**. If used, properties `up` and `down` in [Show scrolling options](#show-scrolling-options) should be set to `true`.
+
+### VerticalOffset
 
 Exactly one of the properties `top` or `bottom` should be defined. If both are defined, `top` is used and `bottom` is ignored.
 
@@ -280,38 +307,11 @@ Value (in px) which moves element from the top edge of window.
 
 Value (in px) which moves element from the bottom edge of window.
 
-### Fixed options
-
-#### width
-* type: `CssOffsetValue | HorizontalOffsetDeterminer`
-* default value: `null`
-
-Sets style `width` property of the fixed element. If it is callback, its return value is processed, as further described. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset width in the original position is used.
-
-#### left
-* type: `CssOffsetValue | HorizontalOffsetDeterminer`
-* default value: `null`
-
-Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used. You can use `computeOffsetLeft` utility.
-
 ### computeOffsetLeft
 * type: `(elem: HTMLElement) => number`
 * default value: `null`
 
 Utility which helps with computing of total offset left across offset parrents. It may be useful for `left` property in [Fixed options](#fixed-options).
-
-### VerticalPlacement
-
-Enum which specifies vertical placement of the fixed element.
-
-Predefined values:
-* Top *(VerticalPlacement.Top)*
-* Bottom *(VerticalPlacement.Bottom)*
-* Toggle *(VerticalPlacement.Toggle)*
-
-#### VerticalPlacement.Toggle
-
-Places element `Top` while scrolling down and `Bottom` while **scrolling up**. If used, properties `up` and `down` in [Show scrolling options](#show-scrolling-options) should be set to `true`.
 
 ### Detailed docs
 
