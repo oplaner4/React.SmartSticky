@@ -237,6 +237,8 @@ See all properties in [Show scrolling options](#show-scrolling-options) section.
 
 ### Show original options
 
+**All** properties are **optional**.
+
 #### above
 * type: `boolean`
 * default value: `false`
@@ -251,6 +253,8 @@ Determines if the fixed element can be be shown under its original position.
 
 ### Show scrolling options
 
+**All** properties are **optional**.
+
 #### up
 * type: `boolean`
 * default value: `false`
@@ -264,6 +268,8 @@ Determines if the fixed element can be shown while scrolling up. If it is callba
 Determines if the fixed element can be shown while scrolling down. If it is callback, its return value is used.
 
 ### Fixed options
+
+**All** properties are **optional**.
 
 #### width
 * type: `CssOffsetValue | HorizontalOffsetDeterminer`
