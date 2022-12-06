@@ -1,4 +1,4 @@
-export class ScrollingManager {
+class ScrollingManager {
   _lastScrollTop: number = 0;
   _lastScrollingDown: boolean = true;
 

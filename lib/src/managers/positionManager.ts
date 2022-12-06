@@ -54,67 +54,8 @@ export class PositionManager {
     return this;
   }
 
-  getOrigOffsetTop() {
-    return computeOffsetTop(this.getSettingsManager().getPlaceholder());
-  }
-
-  private outOfOrigPositionAbove() {
-    if (!this.getSettingsManager().getOptions().show.original.above) {
-      return false;
-    }
-
-    return (
-      this.getOrigOffsetTop() -
-        window.innerHeight +
-        (this.getSettingsManager().getOptions().show.immediately
-          ? this.getSettingsManager().getPlaceholder().offsetHeight
-          : -1 * this.getSettingsManager().getOptions().show.delay) >
-      windowScrollingManager.getCurrentScrollTop()
-    );
-  }
-
-  private outOfOrigPositionUnder() {
-    if (!this.getSettingsManager().getOptions().show.original.under) {
-      return false;
-    }
-
-    return (
-      this.getOrigOffsetTop() +
-        (this.getSettingsManager().getOptions().show.immediately
-          ? 0
-          : this.getSettingsManager().getPlaceholder().offsetHeight +
-            this.getSettingsManager().getOptions().show.delay) <
-      windowScrollingManager.getCurrentScrollTop()
-    );
-  }
-
   outOfOrigPosition() {
     return this.outOfOrigPositionAbove() || this.outOfOrigPositionUnder();
-  }
-
-  private outOfContainerAbove() {
-    return (
-      windowScrollingManager.getCurrentScrollTop() +
-        (this.getVerticalOffsetManager().isCalculatedFromTop()
-          ? this.getVerticalOffsetManager().getFromTop()
-          : window.innerHeight -
-            this.getSettingsManager().getElement().offsetHeight -
-            (this.getVerticalOffsetManager().getFromBottom() as number)) <
-      computeOffsetTop(this.getSettingsManager().getContainer())
-    );
-  }
-
-  private outOfContainerUnder() {
-    return (
-      windowScrollingManager.getCurrentScrollTop() +
-        (this.getVerticalOffsetManager().isCalculatedFromTop()
-          ? this.getSettingsManager().getElement().offsetHeight +
-            this.getVerticalOffsetManager().getFromTop()
-          : window.innerHeight -
-            this.getVerticalOffsetManager().getFromBottom()) >
-      computeOffsetTop(this.getSettingsManager().getContainer()) +
-        this.getSettingsManager().getContainer().offsetHeight
-    );
   }
 
   outOfContainer() {
@@ -172,5 +113,64 @@ export class PositionManager {
       p as Partial<VerticalOffset>
     );
     return this;
+  }
+
+  private getOrigOffsetTop() {
+    return computeOffsetTop(this.getSettingsManager().getPlaceholder());
+  }
+
+  private outOfOrigPositionAbove() {
+    if (!this.getSettingsManager().getOptions().show.original.above) {
+      return false;
+    }
+
+    return (
+      this.getOrigOffsetTop() -
+        window.innerHeight +
+        (this.getSettingsManager().getOptions().show.immediately
+          ? this.getSettingsManager().getPlaceholder().offsetHeight
+          : -1 * this.getSettingsManager().getOptions().show.delay) >
+      windowScrollingManager.getCurrentScrollTop()
+    );
+  }
+
+  private outOfOrigPositionUnder() {
+    if (!this.getSettingsManager().getOptions().show.original.under) {
+      return false;
+    }
+
+    return (
+      this.getOrigOffsetTop() +
+        (this.getSettingsManager().getOptions().show.immediately
+          ? 0
+          : this.getSettingsManager().getPlaceholder().offsetHeight +
+            this.getSettingsManager().getOptions().show.delay) <
+      windowScrollingManager.getCurrentScrollTop()
+    );
+  }
+
+  private outOfContainerAbove() {
+    return (
+      windowScrollingManager.getCurrentScrollTop() +
+        (this.getVerticalOffsetManager().isCalculatedFromTop()
+          ? this.getVerticalOffsetManager().getFromTop()
+          : window.innerHeight -
+            this.getSettingsManager().getElement().offsetHeight -
+            (this.getVerticalOffsetManager().getFromBottom() as number)) <
+      computeOffsetTop(this.getSettingsManager().getContainer())
+    );
+  }
+
+  private outOfContainerUnder() {
+    return (
+      windowScrollingManager.getCurrentScrollTop() +
+        (this.getVerticalOffsetManager().isCalculatedFromTop()
+          ? this.getSettingsManager().getElement().offsetHeight +
+            this.getVerticalOffsetManager().getFromTop()
+          : window.innerHeight -
+            this.getVerticalOffsetManager().getFromBottom()) >
+      computeOffsetTop(this.getSettingsManager().getContainer()) +
+        this.getSettingsManager().getContainer().offsetHeight
+    );
   }
 }

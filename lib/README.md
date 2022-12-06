@@ -99,7 +99,7 @@ yarn install
 yarn start
 ```
 
-This launches **demo page** at [http://localhost:3000/](http://localhost:3000/). Port (3000 by default) might be different when there is other running application (check console).
+This launches **demo page** at [http://localhost:3000/](http://localhost:3000/). Port (`3000` by default) might be different when there is other running application (check console).
 
 For additional information visit this [README](https://github.com/oplaner4/React.SmartSticky/tree/master/demo#reactsmartsticky-demonstration).
 
@@ -111,7 +111,7 @@ For additional information visit this [README](https://github.com/oplaner4/React
 * [VerticalPlacement](#verticalplacement) *(allows to define vertical placement such as top or bottom)*
 * [VerticalOffset](#verticaloffset) *(allows to define custom vertical placement)*
 * [computeOffsetLeft](#computeoffsetleft) *(utility for computing total offset left)*
-* SmartStickyProps *(properties used by SmartSticky)*
+* SmartStickyProps *(properties used by `SmartSticky` component)*
 * SmartStickyPartialOptions *(options which might or might not be specified)*
 
 ### SmartSticky properties
@@ -203,13 +203,13 @@ Value (in px) which postpones fixing of the element and accelerates setting of t
 * type: `boolean`
 * default value: `false`
 
-Determines if the element becomes fixed immediately when its original position is reached. If set to `true`, option `delay` is ignored.
+Determines if the element becomes fixed immediately when its original position is reached. If set to `true`, option [delay](#delay) is ignored.
 
 #### placement
 * type: `VerticalOffsetDeterminer | Partial<VerticalOffset> | VerticalPlacement`
 * default value: `VerticalPlacement.Top`
 
-Specifies (vertical) placement of the fixed element. If it is callback, its return value is processed. Custom placement can be defined via `Partial<VerticalOffset>`, described in [Vertical offset](#verticaloffset) section.
+Specifies (vertical) placement of the fixed element. If it is determiner, its return value is processed. Custom placement can be defined via `Partial<VerticalOffset>`, described in [Vertical offset](#verticaloffset) section.
 
 #### original
 * type: `Partial<ShowOriginalOptions>`
@@ -226,7 +226,7 @@ See all properties in [Show original options](#show-original-options) section.
 #### scrolling
 * type: `Partial<ShowScrollingOptions>`
 
-Options which determine visibility of the element dependent on the scroll direction.
+Options which determine visibility of the element dependent on the window scroll direction.
 
 Can be specified like:
 ```typescript
@@ -256,16 +256,16 @@ Determines if the fixed element can be be shown under its original position.
 **All** properties are **optional**.
 
 #### up
-* type: `boolean`
+* type: `boolean | Determiner<boolean>`
 * default value: `false`
 
-Determines if the fixed element can be shown while scrolling up. If it is callback, its return value is used.
+Determines if the fixed element can be shown while scrolling up. If it is determiner, its return value is used.
 
 #### down
-* type: `boolean`
+* type: `boolean | Determiner<boolean>`
 * default value: `true`
 
-Determines if the fixed element can be shown while scrolling down. If it is callback, its return value is used.
+Determines if the fixed element can be shown while scrolling down. If it is determiner, its return value is used.
 
 ### Fixed options
 
@@ -275,13 +275,13 @@ Determines if the fixed element can be shown while scrolling down. If it is call
 * type: `CssOffsetValue | HorizontalOffsetDeterminer`
 * default value: `null`
 
-Sets style `width` property of the fixed element. If it is callback, its return value is processed, as further described. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset width in the original position is used.
+Sets `style.width` property of the fixed element. If it is determiner, its return value is processed, as further described. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset width in the original position is used.
 
 #### left
 * type: `CssOffsetValue | HorizontalOffsetDeterminer`
 * default value: `null`
 
-Sets style `left` property of the fixed element. If it is callback, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used. You can use `computeOffsetLeft` utility.
+Sets `style.left` property of the fixed element. If it is determiner, its return value is processed, as described further. This should be used for properly behaviour on window resize. If it is `number`, value in px is supposed. If it is `string`, value is used directly. If `null`, element's offset left in the original position is used. You can use [computeOffsetLeft](#computeoffsetleft) utility, especially when you specify different [container](#container).
 
 ### VerticalPlacement
 
@@ -294,15 +294,15 @@ Predefined values:
 
 #### Toggle
 
-Places element `Top` while scrolling down and `Bottom` while **scrolling up**. If used, properties `up` and `down` in [Show scrolling options](#show-scrolling-options) should be set to `true`.
+Places element `Top` while scrolling down and `Bottom` while **scrolling up**. If used, properties [up](#up) and [down](#down) in [Show scrolling options](#show-scrolling-options) should be set to `true`.
 
 ### VerticalOffset
 
-Exactly one of the properties `top` or `bottom` should be defined. If both are defined, `top` is used and `bottom` is ignored.
+Exactly one of the properties [top](#top) or [bottom](#bottom) should be defined. If both are defined, [top](#top) is used and [bottom](#bottom) is ignored. If no property is defined, [top](#top) is set to zero.
 
 #### top
 * type: `number`
-* does not have default value
+* default value: `0`
 
 Value (in px) which moves element from the top edge of window.
 
@@ -316,7 +316,24 @@ Value (in px) which moves element from the bottom edge of window.
 * type: `(elem: HTMLElement) => number`
 * default value: `null`
 
-Utility which helps with computing of total offset left across offset parrents. It may be useful for `left` property in [Fixed options](#fixed-options).
+Utility which helps with computing of **total offset left** across offset parrents. It may be useful for [left](#left) property in [Fixed options](#fixed-options), especially with different [container](#container) specified. Value in px is returned.
+
+Assume this element tree:
+```html
+<body>
+    <div className="relative-position padding-left-100px">
+        <div className="static-position">
+            <div className="relative-position padding-left-100px">
+                <div className="smart_sticky" id="smart_sticky_1">Sticky content</div>
+            </div>
+        </div>
+    </div>
+</body>
+```
+
+An element is in **static position** by default. **Relative position** makes any element for all its children **offset parent**.
+
+If `computeOffsetLeft` utility was used with `.smart_sticky#smart_sticky_1` element as an argument, it would return `200`, because there are **two** offset parents (with relative position), each with **padding left** set to `100 px`.
 
 ### Detailed docs
 

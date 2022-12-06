@@ -18,16 +18,19 @@ export const DemoPage = () => {
   const rowContainerRef = useRef<HTMLDivElement>(null);
   const [rowContainer, setRowContainer] = useState<HTMLDivElement | null>(null);
   const globallyEnabled = true;
+  const title = "React.SmartSticky demonstration";
 
   useEffect(() => {
     if (rowContainerRef !== null && rowContainerRef.current !== null) {
       setRowContainer(rowContainerRef.current);
     }
+
+    document.title = title;
   }, []);
 
   return (
     <Container className="p-4">
-      <h2 className="mb-3">React.SmartSticky examples</h2>
+      <h2 className="mb-3">{title}</h2>
       <Row className="mb-2">
         <Col md={6} lg={4}>
           <StickyDefault enabled={globallyEnabled} />

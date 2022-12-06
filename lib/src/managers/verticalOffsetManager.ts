@@ -5,10 +5,18 @@ export class VerticalOffsetManager {
 
   constructor(offset: Partial<VerticalOffset>) {
     this._verticalOffset = offset;
+
+    if (!this.isCalculatedFromBottom() && !this.isCalculatedFromBottom()) {
+      this._verticalOffset.top = 0;
+    }
   }
 
   isCalculatedFromTop() {
     return 'top' in this._verticalOffset;
+  }
+
+  isCalculatedFromBottom() {
+    return 'bottom' in this._verticalOffset;
   }
 
   getFromTop() {
