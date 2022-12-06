@@ -12,7 +12,7 @@ describe('utils/optionsExtender', () => {
     expect(options).toStrictEqual(defaults);
   });
 
-  it('Changes atomic property', async () => {
+  it('Changes atomic property', () => {
     const setValue = false;
     const options = getExtendedOptions({ enabled: setValue });
     const enabledBefore = defaults.enabled;
@@ -21,7 +21,7 @@ describe('utils/optionsExtender', () => {
     defaults.enabled = enabledBefore;
   });
 
-  it('Changes deep property', async () => {
+  it('Changes deep property', () => {
     const setValue = true;
     const options = getExtendedOptions({
       show: {
@@ -34,7 +34,7 @@ describe('utils/optionsExtender', () => {
     defaults.show.immediately = immediatelyBefore;
   });
 
-  it('Changes all properties', async () => {
+  it('Changes all properties', () => {
     const props: SmartStickyPartialOptions = {
       show: {
         delay: 10,
