@@ -292,10 +292,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@oplaner4/smart-sticky@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@oplaner4/smart-sticky/-/smart-sticky-1.0.2.tgz#3663f3259e183c64e64cdccbc761c1c3d5b24f18"
-  integrity sha512-e1pBwp1Pc0f+8Fsq1x0GwAMQt4RQip6N3N1N0AXDdc7HTNwkLf7GYuVYL/LhpU4AhM+wT7gV6pUc7wrVXeg3ew==
+"@oplaner4/smart-sticky@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@oplaner4/smart-sticky/-/smart-sticky-1.0.4.tgz#76ae5d5b9e377b0a9a6d9d1f3091c83bab98824a"
+  integrity sha512-aXwhGsg06mRXhMTCOpWcqv7KUhvbhj2v40nTWaAHgeEOVnSvGMRwfTGtBzSjVY9QxVG9z2rNUATjwxVKgJ8RMg==
 
 "@popperjs/core@^2.11.5":
   version "2.11.6"
@@ -398,7 +398,7 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-bootstrap@^5.2.0:
+bootstrap@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
   integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
@@ -755,7 +755,7 @@ prop-types@^15.6.2, prop-types@^15.8.1:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
-react-bootstrap@^2.5.0:
+react-bootstrap@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-2.6.0.tgz#bd125889cc9d2bbd7c89334a7c54980ff0a65b94"
   integrity sha512-WnDgN6PR8WZKo2Og5J8EafFi4BsABjc96lNuMNfksrgiPDCw18/woWQCNhAeHFZQWTQ/PijkOrQ9ncTWwO//AA==

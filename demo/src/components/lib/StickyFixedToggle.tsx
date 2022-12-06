@@ -1,10 +1,10 @@
-import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
+import { SmartSticky, VerticalPlacement } from "@oplaner4/smart-sticky";
 
 export const StickyFixedToggle = ({ enabled }: { enabled: boolean }) => {
   return (
     <SmartSticky
       show={{
-        placement: VerticalPosition.Toggle,
+        placement: VerticalPlacement.Toggle,
       }}
       enabled={enabled}
     >

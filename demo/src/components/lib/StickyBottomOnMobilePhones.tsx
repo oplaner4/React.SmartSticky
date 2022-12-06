@@ -1,4 +1,4 @@
-import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
+import { SmartSticky, VerticalPlacement } from "@oplaner4/smart-sticky";
 
 export const StickyBottomOnMobilePhones = ({ enabled }: { enabled: boolean }) => {
   const bound = 768;
@@ -6,7 +6,7 @@ export const StickyBottomOnMobilePhones = ({ enabled }: { enabled: boolean }) =>
   return (
     <SmartSticky show={{
       placement: () => {
-        return window.innerWidth < bound ? VerticalPosition.Bottom : VerticalPosition.Top;
+        return window.innerWidth < bound ? VerticalPlacement.Bottom : VerticalPlacement.Top;
       },
       scrolling: {
         up: () => window.innerWidth < bound,

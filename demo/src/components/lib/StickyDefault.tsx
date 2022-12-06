@@ -1,4 +1,4 @@
-import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
+import { SmartSticky, VerticalPlacement } from "@oplaner4/smart-sticky";
 
 export const StickyDefault = ({ enabled }: { enabled: boolean }) => {
   return (
@@ -10,7 +10,7 @@ export const StickyDefault = ({ enabled }: { enabled: boolean }) => {
           under: true,
           above: false,
         },
-        placement: VerticalPosition.Top,
+        placement: VerticalPlacement.Top,
         scrolling: {
           up: true,
           down: true,

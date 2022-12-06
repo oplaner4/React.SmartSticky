@@ -1,11 +1,11 @@
-import { SmartSticky, VerticalPosition } from "@oplaner4/smart-sticky";
+import { SmartSticky, VerticalPlacement } from "@oplaner4/smart-sticky";
 
 export const StickyImmediatelyAbove = ({ enabled }: { enabled: boolean }) => {
   return (
     <SmartSticky
       show={{
         immediately: true,
-        placement: VerticalPosition.Bottom,
+        placement: VerticalPlacement.Bottom,
         original: {
           above: true,
         },
