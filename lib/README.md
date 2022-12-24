@@ -257,7 +257,7 @@ Determines if the fixed element can be be shown under its original position.
 
 #### up
 * type: `boolean | Determiner<boolean>`
-* default value: `false`
+* default value: `true`
 
 Determines if the fixed element can be shown while scrolling up. If it is determiner, its return value is used.
 
@@ -333,7 +333,7 @@ Assume this element tree:
 
 An element is in **static position** by default. **Relative position** makes any element for all its children **offset parent**.
 
-If `computeOffsetLeft` utility was used with `.smart_sticky#smart_sticky_1` element as an argument, it would return `200`, because there are **two** offset parents (with relative position), each with **padding left** set to `100 px`.
+If `computeOffsetLeft` utility was used with `.smart_sticky#smart_sticky_1` element as an argument, it would return `200`, even if there are **two** offset parents (with relative position), each with **padding left** set to `100 px`.
 
 ### Detailed docs
 
