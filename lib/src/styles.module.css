@@ -17,7 +17,7 @@
       position: fixed;
   }
 
-      .smart_sticky.smart_sticky.smart_sticky_active:not(thead) {
+      .smart_sticky.smart_sticky_active:not(thead) {
         padding: .5rem .7rem;
       }
 

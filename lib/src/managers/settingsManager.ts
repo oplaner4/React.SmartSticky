@@ -27,7 +27,6 @@ export class SettingsManager {
     this._container.classList.add(styles.smart_sticky_container);
 
     this._placeholder = elem.cloneNode(true) as HTMLElement;
-    this._placeholder.removeAttribute('id');
     this._placeholder.classList.add(styles.smart_sticky_placeholder);
     this._placeholder.classList.remove(styles.smart_sticky);
     this._placeholder.style.left = '';
