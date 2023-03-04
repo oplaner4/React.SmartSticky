@@ -1,4 +1,5 @@
 import { SmartSticky } from "@oplaner4/smart-sticky";
+import './Sticky.css';
 
 export const StickyCustomBgAndPos = ({ enabled }: { enabled: boolean }) => {
   return (

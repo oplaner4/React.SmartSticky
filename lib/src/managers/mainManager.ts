@@ -2,7 +2,7 @@ import { SmartStickyOptions } from './../SmartSticky.types';
 import { PositionManager } from './positionManager';
 import { SettingsManager } from './settingsManager';
 import styles from '../styles.module.css';
-import { noBackgroundCssValues } from '../immutable';
+import { activeClass } from 'immutable';
 
 export class MainManager {
   _settingsManagerInstance: SettingsManager;
@@ -124,23 +124,12 @@ export class MainManager {
 
   private activate() {
     const elem = this.getSettingsManager().preparePlaceholder().getElement();
-    elem.classList.remove(styles.smart_sticky_background);
     elem.style.left = this.getSettingsManager().getFixedLeft();
     elem.style.width = this.getSettingsManager().getFixedWidth().toString();
 
     this.getSettingsManager().getOptions().onActivate();
-    elem.classList.add(styles.smart_sticky_active);
+    elem.classList.add(styles.smart_sticky_active, activeClass);
     this.getSettingsManager().getOptions().onActivated();
-
-    if (
-      noBackgroundCssValues.has(
-        this.getSettingsManager().getElement().style.backgroundColor
-      )
-    ) {
-      this.getSettingsManager()
-        .getElement()
-        .classList.add(styles.smart_sticky_background);
-    }
 
     return this;
   }
@@ -148,6 +137,6 @@ export class MainManager {
   private activated() {
     return this.getSettingsManager()
       .getElement()
-      .classList.contains(styles.smart_sticky_active);
+      .classList.contains(activeClass);
   }
 }

@@ -1,8 +1,12 @@
 import { SmartSticky } from "@oplaner4/smart-sticky";
+import './Sticky.css';
 
 export const StickyDelayed = ({ enabled }: { enabled: boolean }) => {
   return (
     <SmartSticky
+      elemProps={{
+        className: 'bare',
+      }}
       show={{
         delay: 600,
       }}

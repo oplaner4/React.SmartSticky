@@ -1,8 +1,12 @@
 import { SmartSticky, computeOffsetLeft } from "@oplaner4/smart-sticky";
+import './Sticky.css';
 
 export const StickyRowAsContainer = ({ enabled, rowContainer }: { enabled: boolean; rowContainer: HTMLDivElement }) => {
   return (
     <SmartSticky
+      elemProps={{
+        className: 'bare',
+      }}
       container={rowContainer}
       fixed={{
         width: () => rowContainer.offsetWidth,

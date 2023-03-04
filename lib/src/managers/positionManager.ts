@@ -1,6 +1,6 @@
 import { computeOffsetTop } from './../utils/offsetComputer';
 import { windowScrollingManager } from './scrollingManager';
-import { positions } from '../immutable';
+import { activeClass, positions } from '../immutable';
 import { VerticalOffset } from '../SmartSticky.types';
 import { VerticalOffsetManager } from './verticalOffsetManager';
 import { SettingsManager } from './settingsManager';
@@ -25,7 +25,7 @@ export class PositionManager {
 
   setOrigPosition() {
     const elem = this.getSettingsManager().getElement();
-    elem.classList.remove(styles.smart_sticky_active);
+    elem.classList.remove(styles.smart_sticky_active, activeClass);
 
     elem.style.left = `${
       this.getSettingsManager().getPlaceholder().offsetLeft

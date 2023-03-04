@@ -17,15 +17,7 @@
       position: fixed;
   }
 
-      .smart_sticky.smart_sticky_active:not(thead) {
-        padding: .5rem .7rem;
-      }
-
       .smart_sticky.smart_sticky_active.smart_sticky_invisible, .smart_sticky_placeholder {
           opacity: 0;
           visibility: hidden;
-      }
-
-      .smart_sticky.smart_sticky_active.smart_sticky_background {
-          background-color: white;
       }

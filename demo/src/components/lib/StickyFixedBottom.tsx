@@ -1,8 +1,12 @@
 import { SmartSticky, VerticalPlacement } from "@oplaner4/smart-sticky";
+import './Sticky.css';
 
 export const StickyFixedBottom = ({ enabled }: { enabled: boolean }) => {
   return (
     <SmartSticky
+      elemProps={{
+        className: 'bare',
+      }}
       show={{
         placement: VerticalPlacement.Bottom,
         scrolling: {

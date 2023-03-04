@@ -30,13 +30,9 @@ export const defaults: SmartStickyOptions = {
   onDeactivated: () => null,
 };
 
-export const noBackgroundCssValues = new Set([
-  'rgba(0, 0, 0, 0)',
-  'transparent',
-  '',
-]);
-
 export const identityAttributes = ['id', 'for', 'name'];
+
+export const activeClass = 'active';
 
 export const positions: Record<number, VerticalOffsetDeterminer> = {};
 
