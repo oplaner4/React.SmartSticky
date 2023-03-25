@@ -6,7 +6,7 @@ export class VerticalOffsetManager {
   constructor(offset: Partial<VerticalOffset>) {
     this._verticalOffset = offset;
 
-    if (!this.isCalculatedFromBottom() && !this.isCalculatedFromBottom()) {
+    if (!this.isCalculatedFromTop() && !this.isCalculatedFromBottom()) {
       this._verticalOffset.top = 0;
     }
   }

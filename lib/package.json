@@ -1,6 +1,6 @@
 {
   "name": "@oplaner4/smart-sticky",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "keywords": ["sticky", "fixed", "sticky position", "fixed position", "viewport", "scroll", "window"],
   "description": "React based Library with component to easily switch between original and fixed position with many customizations.",
   "main": "dist/index.min.js",
